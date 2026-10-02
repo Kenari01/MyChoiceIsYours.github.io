@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b1f">
+  <meta name="description" content="My Choice Is Yours — quand tu ne sais pas quoi choisir, laisse-nous décider.">
+  <title>My Choice Is Yours — V3</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23080b1f'/%3E%3Ccircle cx='32' cy='32' r='22' fill='%237c3aed'/%3E%3Cpath d='M21 33l7 7 16-17' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-grid"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#accueil" aria-label="My Choice Is Yours">
+      <span class="brand-mark">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="12" cy="18" r="5"></circle>
+          <circle cx="12" cy="46" r="5"></circle>
+          <circle cx="52" cy="32" r="6"></circle>
+          <path d="M17 18h10l19 14M17 46h10l19-14"></path>
+          <path class="check" d="M46 31l4 4 8-9"></path>
+        </svg>
+      </span>
+      <span>
+        <strong>My Choice</strong>
+        <small>Is Yours</small>
+      </span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="#app">Décider</a>
+      <a href="#modes">Modes</a>
+      <a href="#listes">Listes</a>
+      <a href="#historique">Historique</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="soundBtn" title="Activer/désactiver les sons" aria-label="Sons">🔊</button>
+      <button class="icon-btn" id="themeBtn" title="Changer le thème" aria-label="Changer le thème">◐</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+    </div>
+  </header>
+
+  <main id="accueil">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">V3 • DECISION ENGINE</span>
+        <h1>Arrête de choisir.<br><span>Laisse-nous décider.</span></h1>
+        <p>Ajoute tes options, choisis ton mode et laisse <b>My Choice Is Yours</b> prendre la décision.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#app">Commencer <span>→</span></a>
+          <button class="btn btn-ghost" id="surpriseHero">🎲 Surprends-moi</button>
+        </div>
+        <div class="trust-row">
+          <span>⚡ Instantané</span>
+          <span>🔒 100% local</span>
+          <span>📱 Mobile friendly</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="decision-orbit">
+          <span class="orbit-choice c1">Pizza</span>
+          <span class="orbit-choice c2">Cinéma</span>
+          <span class="orbit-choice c3">Voyage</span>
+          <div class="decision-core">
+            <div class="core-icon">✓</div>
+            <strong>DECISION</strong>
+            <small>TAKE IT</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-strip">
+      <div><strong id="statDecisions">0</strong><span>Décisions</span></div>
+      <div><strong id="statChoices">0</strong><span>Options créées</span></div>
+      <div><strong id="statFavorites">0</strong><span>Favoris</span></div>
+      <div><strong id="statLists">0</strong><span>Listes</span></div>
+    </section>
+
+    <section class="app-section section" id="app">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">01 • TON CHOIX</span>
+          <h2>Qu'est-ce qu'on décide ?</h2>
+          <p>Entre au moins 2 options. Tu peux aussi charger une liste prête à l'emploi.</p>
+        </div>
+        <button class="text-btn" id="clearChoices">Tout effacer</button>
+      </div>
+
+      <div class="app-layout">
+        <aside class="control-card glass-card">
+          <div class="field-label">Ajouter une option</div>
+          <div class="add-row">
+            <input id="choiceInput" type="text" maxlength="80" placeholder="Ex : Aller au restaurant" autocomplete="off">
+            <button class="add-btn" id="addChoice" aria-label="Ajouter">+</button>
+          </div>
+          <div class="mini-row">
+            <span id="choiceCounter">0 option</span>
+            <button class="text-btn" id="randomPreset">Liste aléatoire</button>
+          </div>
+
+          <div class="quick-lists">
+            <div class="field-label">Listes rapides</div>
+            <div class="preset-grid">
+              <button data-preset="food">🍕 Manger</button>
+              <button data-preset="movies">🎬 Films</button>
+              <button data-preset="travel">✈️ Voyage</button>
+              <button data-preset="games">🎮 Jeux</button>
+              <button data-preset="weekend">🌴 Week-end</button>
+              <button data-preset="work">💼 Travail</button>
+            </div>
+          </div>
+
+          <div class="field-label mode-label">Mode de décision</div>
+          <div class="mode-selector" id="modeSelector">
+            <button class="mode-choice active" data-mode="quick"><span>🎯</span><b>Rapide</b><small>Choix aléatoire</small></button>
+            <button class="mode-choice" data-mode="wheel"><span>🎡</span><b>Roue</b><small>Tourne et révèle</small></button>
+            <button class="mode-choice" data-mode="tournament"><span>🏆</span><b>Tournoi</b><small>Face à face</small></button>
+            <button class="mode-choice" data-mode="elimination"><span>⚔️</span><b>Élimination</b><small>Une option sort</small></button>
+            <button class="mode-choice" data-mode="chaos"><span>💀</span><b>Chaos</b><small>Aucune logique</small></button>
+            <button class="mode-choice" data-mode="smart"><span>🧠</span><b>Intelligent</b><small>Selon tes critères</small></button>
+          </div>
+        </aside>
+
+        <div class="decision-card glass-card">
+          <div class="card-top">
+            <div>
+              <span class="eyebrow" id="modeEyebrow">MODE RAPIDE</span>
+              <h3 id="modeTitle">Choisis pour moi</h3>
+            </div>
+            <button class="icon-btn" id="shareBtn" title="Partager cette décision">↗</button>
+          </div>
+
+          <div id="choiceList" class="choice-list empty">
+            <div class="empty-state">
+              <div>✦</div>
+              <strong>Tes options apparaîtront ici</strong>
+              <span>Ajoute 2 options ou utilise une liste rapide.</span>
+            </div>
+          </div>
+
+          <div id="smartPanel" class="smart-panel hidden">
+            <div class="smart-head">
+              <div>
+                <span class="eyebrow">MODE INTELLIGENT</span>
+                <h4>Qu'est-ce qui compte le plus ?</h4>
+              </div>
+              <span class="smart-score">pondération</span>
+            </div>
+            <div class="criteria-grid">
+              <label>💰 Budget <input type="range" min="0" max="10" value="5" data-criterion="budget"><output>5</output></label>
+              <label>❤️ Envie <input type="range" min="0" max="10" value="8" data-criterion="envie"><output>8</output></label>
+              <label>⚡ Facilité <input type="range" min="0" max="10" value="5" data-criterion="facilite"><output>5</output></label>
+              <label>✨ Nouveauté <input type="range" min="0" max="10" value="4" data-criterion="nouveaute"><output>4</output></label>
+            </div>
+            <p class="hint">Pour chaque option, tu attribues ensuite une note de 1 à 10.</p>
+          </div>
+
+          <div id="wheelArea" class="wheel-area hidden">
+            <div class="wheel-pointer">▼</div>
+            <div id="wheel" class="wheel">
+              <div class="wheel-center">GO</div>
+            </div>
+          </div>
+
+          <div id="tournamentArea" class="tournament-area hidden">
+            <div class="tournament-head">
+              <span>🏆 Face à face</span>
+              <small id="tournamentRound">Round 1</small>
+            </div>
+            <div id="matchChoices" class="match-choices"></div>
+          </div>
+
+          <div class="decision-actions">
+            <button class="btn btn-primary decide-btn" id="decideBtn" disabled>
+              <span id="decideIcon">✦</span>
+              <span id="decideText">CHOISIR POUR MOI</span>
+            </button>
+            <button class="btn btn-ghost reroll-btn hidden" id="rerollBtn">↻ Recommencer</button>
+          </div>
+
+          <div id="resultBox" class="result-box hidden">
+            <div class="result-glow"></div>
+            <span class="eyebrow">LA DÉCISION EST PRISE</span>
+            <div id="resultText">Pizza</div>
+            <p id="resultSubtext">C'est ton choix. Maintenant, assume. 😎</p>
+            <div class="result-actions">
+              <button class="btn btn-primary" id="acceptResult">✓ J'assume</button>
+              <button class="btn btn-ghost" id="rejectResult">↻ Non, encore</button>
+              <button class="btn btn-ghost" id="shareResult">↗ Partager</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="modes-section section" id="modes">
+      <div class="section-heading centered">
+        <span class="eyebrow">02 • MODES</span>
+        <h2>Une décision à ta façon.</h2>
+        <p>Du choix express au chaos total, change de méthode quand tu veux.</p>
+      </div>
+      <div class="mode-showcase">
+        <article class="feature-card" data-select-mode="quick"><span>🎯</span><h3>Rapide</h3><p>Un tirage instantané, sans prise de tête.</p></article>
+        <article class="feature-card" data-select-mode="wheel"><span>🎡</span><h3>Roue</h3><p>Une vraie roue animée pour le plaisir du suspense.</p></article>
+        <article class="feature-card" data-select-mode="tournament"><span>🏆</span><h3>Tournoi</h3><p>Les options s'affrontent jusqu'à la finale.</p></article>
+        <article class="feature-card" data-select-mode="elimination"><span>⚔️</span><h3>Élimination</h3><p>À chaque tour, une option disparaît.</p></article>
+        <article class="feature-card" data-select-mode="chaos"><span>💀</span><h3>Chaos</h3><p>Des règles absurdes. Une seule certitude : le résultat.</p></article>
+        <article class="feature-card" data-select-mode="smart"><span>🧠</span><h3>Intelligent</h3><p>Compare les critères que tu juges importants.</p></article>
+      </div>
+    </section>
+
+    <section class="lists-section section" id="listes">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">03 • MES LISTES</span>
+          <h2>Garde tes décisions prêtes.</h2>
+          <p>Enregistre tes listes favorites directement dans ton navigateur.</p>
+        </div>
+        <button class="btn btn-secondary" id="saveListBtn">＋ Enregistrer la liste</button>
+      </div>
+      <div id="savedLists" class="saved-lists"></div>
+    </section>
+
+    <section class="history-section section" id="historique">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">04 • HISTORIQUE</span>
+          <h2>Tes dernières décisions.</h2>
+          <p>Tout reste sur ton appareil. Tu peux supprimer l'historique à tout moment.</p>
+        </div>
+        <button class="text-btn danger" id="clearHistory">Effacer l'historique</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+    <section class="share-section section">
+      <div class="share-card glass-card">
+        <div>
+          <span class="eyebrow">PARTAGE</span>
+          <h2>Décide à plusieurs, même à distance.</h2>
+          <p>Crée un lien contenant tes options et envoie-le à tes amis. Chacun ouvre le même choix sur son appareil.</p>
+        </div>
+        <button class="btn btn-primary" id="copyDecisionLink">🔗 Copier mon lien</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="brand footer-brand">
+      <span class="brand-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="12" cy="18" r="5"></circle><circle cx="12" cy="46" r="5"></circle><circle cx="52" cy="32" r="6"></circle><path d="M17 18h10l19 14M17 46h10l19-14"></path><path class="check" d="M46 31l4 4 8-9"></path></svg></span>
+      <span><strong>My Choice</strong><small>Is Yours</small></span>
+    </div>
+    <p>Quand tu ne sais pas quoi choisir, laisse-nous décider.</p>
+    <span class="footer-version">V3 • Made for indecisive people.</span>
+  </footer>
+
+  <div id="toast" class="toast" role="status"></div>
+  <div id="confetti" class="confetti"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
